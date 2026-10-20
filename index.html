@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}</style>
+<title>By Sofia Content</title>
+<meta name="description" content="Sofía Demarco · Licenciada en Marketing y creadora de contenido en Santiago, Chile. Estrategia, producción audiovisual, edición, diseño y gestión de redes para marcas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Poppins:wght@700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: editorial crema alineado a la izquierda, fotos en blanco y negro con un bloque vino desplazado detrás (como un registro de imprenta) y las etiquetas tipo cinta del manual; el video manda en el portafolio y una banda oscura cierra en contacto */
+:root{
+  /* Paleta exacta del Manual de Marca */
+  --vino:#5A171E;
+  --vino-prof:#461217;
+  --crema:#EDE9E4;
+  --negro:#000000;
+  --blanco:#FFFFFF;
+  --carbon:#1C1718;
+  --piedra:#6B6466;
+  --niebla:#B3ADAB;
+  --tostado:#5B4636;
+  /* Tipografías del manual: Blacker Sans Display (títulos), Source Sans 3 (texto), Poppins Bold (solo logo) */
+  --f-display:"Blacker Sans Display","Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-logo:Poppins,"Helvetica Neue",Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --wrap:1200px;
+  --gl:max(16px, env(safe-area-inset-left, 0px));
+  --gr:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--crema);color:var(--negro);font-family:var(--f-body);font-size:16.5px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+main{overflow-x:clip}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--vino);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gl);padding-right:var(--gr)}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.025em;line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+.eyebrow{font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--vino)}
+.acento{color:var(--vino)}
+.cinta{display:inline-block;background:var(--vino);color:var(--blanco);font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;padding:.18em .45em .24em;line-height:1.1}
+.cinta.blanca{background:var(--blanco);color:var(--vino)}
+.sec{padding-block:clamp(56px,8vw,104px)}
+.sec-titulo{font-size:clamp(30px,4.2vw,56px);margin-top:14px}
+
+/* Píldoras */
+.pill{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:.55em;padding:12px 22px;border:1px solid var(--negro);border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;background:transparent;transition:color .35s var(--ease),border-color .35s var(--ease)}
+.pill::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--negro);transform:translateY(101%);border-radius:inherit;transition:transform .45s var(--ease)}
+.pill:hover{color:var(--crema)}
+.pill:hover::before{transform:translateY(0)}
+.pill svg{width:15px;height:15px;flex:none;transition:transform .35s var(--ease)}
+.pill:hover svg.fl{transform:translate(2px,-2px)}
+.pill.solida{background:var(--vino);border-color:var(--vino);color:var(--blanco)}
+.pill.solida::before{background:var(--negro)}
+.pill.chica{padding:8px 16px;font-size:14px}
+.pill[aria-pressed="true"]{background:var(--vino);border-color:var(--vino);color:var(--blanco)}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--vino-prof);color:var(--crema);transition:box-shadow .3s}
+.top.scrolled{box-shadow:0 10px 30px -18px rgba(28,23,24,.7)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
+.logo{font-family:var(--f-logo);font-weight:700;font-size:15px;letter-spacing:.02em;text-decoration:none;text-transform:uppercase;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a.lnk{text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transition:background .25s}
+.nav a.lnk:hover{background:rgba(237,233,228,.12)}
+.top .pill{border-color:var(--crema);color:var(--crema)}
+.top .pill::before{background:var(--crema)}
+.top .pill:hover{color:var(--vino-prof)}
+.top .pill.solida{background:var(--crema);color:var(--vino-prof);border-color:var(--crema)}
+.top .pill.solida::before{background:var(--niebla)}
+.menu-btn{display:none}
+@media (max-width:900px){
+  .menu-btn{display:inline-flex}
+  .nav{position:absolute;left:0;right:0;top:64px;flex-direction:column;align-items:flex-start;gap:4px;background:var(--vino-prof);border-top:1px solid rgba(237,233,228,.15);padding:12px var(--gr) 20px var(--gl);display:none}
+  .nav.abierto{display:flex}
+  .nav a.lnk{font-size:20px;padding:10px 0}
+  .nav .pill{margin-top:10px}
+}
+
+/* Foto con bloque vino desplazado detrás */
+.retrato{position:relative;isolation:isolate}
+.retrato::before{content:"";position:absolute;z-index:-1;inset:22px -22px -22px 22px;background:var(--vino);transition:inset .7s var(--ease)}
+.retrato:hover::before{inset:30px -30px -30px 30px}
+.retrato img{width:100%;aspect-ratio:2/3;object-fit:cover;filter:contrast(1.04)}
+.retrato .cinta{position:absolute;font-size:clamp(15px,1.5vw,19px)}
+
+/* Portada: foto grande, nombre y propuesta */
+.portada{position:relative;height:clamp(560px,82vh,820px);overflow:hidden;background:var(--piedra);color:var(--blanco)}
+.portada > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 24%;animation:zoom 2.4s var(--ease) both}
+@keyframes zoom{from{transform:scale(1.06)}to{transform:none}}
+.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,23,24,.38),transparent 28%),linear-gradient(90deg,rgba(28,23,24,.05) 30%,rgba(28,23,24,.45)),linear-gradient(0deg,rgba(28,23,24,.5),transparent 45%)}
+.portada .wrap{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr auto;padding-block:clamp(32px,5vw,64px)}
+.propuesta{grid-column:2;align-self:start;justify-self:end;text-align:right;max-width:30em;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+.propuesta .eyebrow{color:var(--crema)}
+.propuesta h1{font-size:clamp(26px,3vw,40px);font-weight:700;color:var(--blanco);text-wrap:balance}
+.propuesta h1 em{font-style:normal;color:var(--blanco);background:var(--vino);padding:0 .18em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.propuesta .ctas{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:6px}
+.portada .pill{border-color:var(--blanco);color:var(--blanco)}
+.portada .pill::before{background:var(--blanco)}
+.portada .pill:hover{color:var(--negro)}
+.portada .pill.solida{background:var(--vino);border-color:var(--vino)}
+.portada .pill.solida::before{background:var(--negro)}
+.portada .pill.solida:hover{color:var(--blanco)}
+.firma-hero{grid-column:1 / -1;grid-row:2;align-self:end;margin:0;font-weight:700;font-size:clamp(13px,1.3vw,16px);letter-spacing:.28em;text-transform:uppercase;line-height:1.6;color:var(--crema);animation:sube 1s var(--ease) both .3s}
+@keyframes sube{from{transform:translateY(40px);opacity:.001}to{transform:none;opacity:1}}
+@media (max-width:760px){
+  .portada{height:auto;min-height:620px}
+  .portada > img{object-position:30% 20%}
+  .portada::after{background:linear-gradient(180deg,rgba(28,23,24,.5),transparent 22%),linear-gradient(0deg,rgba(28,23,24,.8),rgba(28,23,24,.1) 70%)}
+  .portada .wrap{grid-template-columns:1fr;grid-template-rows:1fr auto auto;min-height:620px}
+  .propuesta{grid-column:1;grid-row:3;align-self:end;justify-self:start;text-align:left;align-items:flex-start;margin-top:20px}
+  .propuesta .ctas{justify-content:flex-start}
+  .firma-hero{grid-row:1;align-self:start}
+}
+
+/* Visión + cinta de valores */
+.vision{padding-block:clamp(72px,9vw,112px) clamp(40px,5vw,64px);text-align:center}
+.vision .eyebrow{color:var(--piedra)}
+.vision p.frase{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,2.3vw,30px);letter-spacing:-.02em;line-height:1.2;max-width:24em;margin:18px auto 0;color:var(--vino-prof);text-wrap:balance}
+.valores{overflow:hidden;border-block:1px solid var(--niebla);padding-block:18px}
+.valores .cinta-v{display:flex;width:max-content;animation:desliza 50s linear infinite}
+.valores span{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.03em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px var(--vino);padding-inline:.4em;display:flex;align-items:center;gap:.8em}
+.valores span::after{content:"·";color:var(--vino);-webkit-text-stroke:0}
+.valores span:nth-child(3n+1){color:var(--vino);-webkit-text-stroke:0}
+
+/* Sobre mí */
+.historia{margin-top:26px;display:flex;flex-direction:column;gap:14px;max-width:34em;color:var(--negro)}
+.historia p:first-child{font-size:clamp(17px,1.5vw,19px);color:var(--negro);line-height:1.45}
+.historia strong{color:var(--vino);font-weight:700}
+.atajos{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.sobre .wrap{display:grid;grid-template-columns:auto minmax(0,5fr) minmax(0,6fr);gap:clamp(20px,3vw,40px) clamp(40px,6vw,88px);align-items:center}
+.sobre .vertical{margin:0;align-self:center;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(52px,6.4vw,100px);line-height:.8;letter-spacing:-.03em;color:var(--vino);white-space:nowrap;text-align:start;margin-right:calc(-1 * clamp(16px,3vw,48px))}
+.sobre .retrato{width:calc(100% - 22px);max-width:430px;margin-bottom:22px}
+.sobre .retrato .c1{right:-30px;bottom:60px;transform:rotate(2deg)}
+@media (max-width:860px){
+  .sobre .wrap{grid-template-columns:1fr}
+  .sobre .vertical{writing-mode:horizontal-tb;transform:none;font-size:clamp(40px,12vw,72px);margin-right:0}
+  .sobre .retrato{max-width:340px}
+}
+
+/* Portafolio en movimiento */
+.port{padding-block:clamp(64px,8vw,104px) clamp(56px,7vw,88px);background:var(--crema);border-block:1px solid var(--niebla)}
+.port-head{display:flex;justify-content:space-between;align-items:end;gap:24px 48px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,44px)}
+.port-head p{max-width:30em;color:var(--negro)}
+.fila{overflow:hidden;padding-block:6px;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.pista{display:flex;gap:14px;width:max-content;animation:desliza var(--dur,90s) linear infinite}
+.fila.inversa .pista{animation-direction:reverse}
+.port.pausado .pista,.fila:hover .pista{animation-play-state:paused}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
+.pieza{position:relative;flex:none;width:clamp(150px,15vw,200px);aspect-ratio:9/16;background:var(--carbon);overflow:hidden;border:0;padding:0;text-align:left}
+.pieza video{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.pieza:hover video{transform:scale(1.05)}
+.pieza .info{position:absolute;inset:auto 0 0 0;padding:44px 10px 10px;background:linear-gradient(transparent,rgba(28,23,24,.82));color:var(--blanco);display:flex;flex-direction:column;gap:1px}
+.pieza .info b{font-family:var(--f-display);font-size:15px;letter-spacing:-.01em;line-height:1.15}
+.pieza .info small{font-size:12px;opacity:0;max-height:0;transition:opacity .3s,max-height .35s var(--ease)}
+.pieza:hover .info small,.pieza:focus-visible .info small{opacity:.85;max-height:2em}
+.pieza .ver{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;background:var(--blanco);color:var(--vino);display:grid;place-items:center;transform:scale(.6);opacity:0;transition:transform .35s var(--ease),opacity .25s}
+.pieza:hover .ver,.pieza:focus-visible .ver{transform:scale(1);opacity:1}
+.pieza .ver svg{width:12px;height:12px;margin-left:2px}
+.cats{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:clamp(24px,3vw,36px)}
+.cats .lado{margin-left:auto;display:flex;align-items:center;gap:14px}
+.cuenta{font-size:14px;color:var(--piedra);font-variant-numeric:tabular-nums}
+@media (max-width:640px){.cats .lado{margin-left:0;width:100%;justify-content:space-between}}
+
+/* Lo que me hace distinta */
+.distinta{position:relative;isolation:isolate;color:var(--crema);background:var(--carbon)}
+.distinta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(28,23,24,.55),rgba(28,23,24,.72)),url("img/fondo-distinta.jpg") center 35%/cover}
+.distinta .eyebrow{color:var(--niebla)}
+.distinta .sec-titulo{color:var(--blanco);max-width:14em}
+.distinta .sec-titulo .acento{color:var(--crema)}
+.difs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:clamp(36px,5vw,56px);max-width:960px}
+.dif{background:var(--vino);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px;transition:transform .5s var(--ease),background .3s}
+.dif h3{font-size:clamp(20px,1.9vw,26px);color:var(--blanco)}
+.dif p{color:var(--crema)}
+.dif:hover{transform:translateY(-6px);background:var(--vino-prof)}
+@media (max-width:640px){.difs{grid-template-columns:1fr}}
+
+/* En qué te puedo ayudar */
+.ayuda-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 64px;align-items:end}
+.ayuda-head p{color:var(--negro);max-width:32em}
+@media (max-width:800px){.ayuda-head{grid-template-columns:1fr}}
+.chat{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);margin-top:clamp(44px,6vw,72px);align-items:center}
+.globos{display:flex;flex-direction:column;gap:16px}
+.globo{--rot:-1deg;--dur:6s;position:relative;align-self:flex-start;max-width:min(100%,25em);text-align:left;background:var(--blanco);color:var(--negro);border:0;border-radius:22px 22px 22px 6px;padding:16px 22px;font-family:var(--f-display);font-weight:700;font-size:clamp(15px,1.35vw,18px);letter-spacing:-.01em;line-height:1.25;box-shadow:0 18px 34px -22px rgba(28,23,24,.45);transform:rotate(var(--rot));animation:flota var(--dur) ease-in-out infinite;transition:background .3s,color .3s,box-shadow .3s}
+.globo:nth-of-type(2){align-self:flex-end;--rot:1.2deg;--dur:7s;animation-delay:-2s;margin-right:4%}
+.globo:nth-of-type(3){align-self:center;--rot:-.6deg;--dur:6.5s;animation-delay:-4s}
+.globo:nth-of-type(4){align-self:flex-end;--rot:1.6deg;--dur:7.5s;animation-delay:-1s}
+.globo:nth-of-type(5){margin-left:6%;--rot:-1.4deg;--dur:6.8s;animation-delay:-3s}
+.globo:nth-of-type(6){align-self:flex-end;--rot:.8deg;--dur:7.2s;animation-delay:-5s;margin-right:8%}
+.globo small{display:block;font-family:var(--f-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra);margin-bottom:6px}
+.globo:hover{box-shadow:0 24px 40px -20px rgba(90,23,30,.55)}
+.globo[aria-selected="true"]{background:var(--vino);color:var(--blanco)}
+.globo[aria-selected="true"] small{color:var(--niebla)}
+@keyframes flota{0%,100%{transform:translateY(0) rotate(var(--rot))}50%{transform:translateY(-9px) rotate(var(--rot))}}
+.respuesta{position:sticky;top:96px;background:var(--vino-prof);color:var(--crema);border-radius:26px 26px 6px 26px;padding:clamp(26px,3vw,38px);box-shadow:0 30px 60px -34px rgba(70,18,23,.8)}
+.respuesta .quien{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.respuesta .quien img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:center 18%;border:2px solid var(--crema)}
+.respuesta .quien b{display:block;font-family:var(--f-display);font-size:17px;color:var(--blanco)}
+.respuesta .quien span{font-size:13px;color:var(--niebla)}
+.respuesta .serv{font-size:13px}
+.respuesta h3{font-size:clamp(21px,2.1vw,28px);color:var(--blanco);margin-top:14px}
+.respuesta p{margin-top:12px;color:var(--crema)}
+.respuesta .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.respuesta .tags span{font-size:13px;font-weight:600;border:1px solid rgba(237,233,228,.4);border-radius:999px;padding:4px 12px}
+.respuesta .pill{margin-top:26px;background:var(--crema);border-color:var(--crema);color:var(--vino-prof)}
+.respuesta .pill::before{background:var(--blanco)}
+.respuesta .pill:hover{color:var(--vino-prof)}
+.respuesta .cambia{animation:aparece .45s ease both}
+.sec-titulo.grande{font-size:clamp(34px,5.2vw,70px)}
+.ayuda .ayuda-head{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+@media (max-width:800px){.ayuda .ayuda-head{grid-template-columns:1fr}}
+.ayuda-head .sub{display:block;font-family:var(--f-display);font-size:clamp(18px,1.8vw,23px);letter-spacing:-.015em;line-height:1.15;color:var(--vino);margin-bottom:10px}
+.ayuda-cta{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+.ayuda-cta p{font-family:var(--f-display);font-weight:700;font-size:24px;letter-spacing:-.015em}
+@media (max-width:860px){
+  .chat{grid-template-columns:1fr}
+  .globo,.globo:nth-of-type(n){align-self:flex-start;margin:0;max-width:92%}
+  .globo:nth-of-type(even){align-self:flex-end}
+  .respuesta{position:static}
+}
+@media (prefers-reduced-motion:reduce){.globo{animation:none}}
+
+/* Método */
+.metodo{background:var(--crema);border-block:1px solid var(--niebla)}
+.metodo .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(36px,6vw,80px);align-items:start}
+.pasos{list-style:none;margin:32px 0 0;padding:0;counter-reset:paso}
+.pasos li{counter-increment:paso;display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 12px;padding:18px 0;border-top:1px solid var(--niebla);transition:padding .35s var(--ease)}
+.pasos li::before{content:counter(paso,decimal-leading-zero);font-family:var(--f-display);font-weight:700;font-size:24px;color:var(--vino);grid-row:span 2;line-height:1.1}
+.pasos li:hover{padding-left:8px}
+.pasos b{font-family:var(--f-display);font-size:21px;letter-spacing:-.015em}
+.pasos span{font-size:16px;color:var(--negro)}
+.col-der{position:sticky;top:96px;display:flex;flex-direction:column}
+.foto-metodo{margin:0;position:relative;isolation:isolate}
+.foto-metodo img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 40%}
+.recibes{background:var(--blanco);border:1px solid var(--niebla);padding:30px;margin:-40px 0 0 clamp(16px,3vw,36px);position:relative}
+.recibes h3{font-size:12px;font-family:var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--vino);margin-bottom:18px}
+.recibes ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.recibes li{padding-left:24px;position:relative}
+.recibes li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:6px;border-left:2px solid var(--vino);border-bottom:2px solid var(--vino);transform:rotate(-45deg)}
+@media (max-width:860px){.metodo .wrap{grid-template-columns:1fr}.col-der{position:static}}
+
+/* Marcas */
+.marcas{padding-block:clamp(56px,7vw,88px);overflow:hidden}
+.marcas .eyebrow{margin-bottom:24px}
+.cinta-marcas{display:flex;width:max-content;animation:desliza 60s linear infinite}
+.marcas:hover .cinta-marcas{animation-play-state:paused}
+.cinta-marcas ul{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+.cinta-marcas li{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3.4vw,44px);letter-spacing:-.03em;white-space:nowrap;padding-inline:clamp(18px,2.4vw,32px);transition:color .25s;display:flex;align-items:center;gap:clamp(36px,4.8vw,64px)}
+.cinta-marcas li::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--vino);flex:none}
+.cinta-marcas li:hover{color:var(--vino)}
+
+/* Reseñas */
+.res-head{display:flex;justify-content:space-between;align-items:end;gap:16px 48px;flex-wrap:wrap}
+.res-head p{color:var(--piedra);max-width:28em;font-size:15px}
+.promedio{display:flex;align-items:center;gap:14px;margin-top:6px}
+.promedio b{font-family:var(--f-display);font-size:clamp(32px,3.6vw,48px);line-height:1;color:var(--vino)}
+.promedio span{font-size:14px;color:var(--piedra);line-height:1.4}
+.estrellas{color:var(--vino);letter-spacing:.12em;font-size:18px}
+.testis{columns:3 300px;column-gap:18px;margin-top:40px}
+.testi{break-inside:avoid;margin:0 0 18px;background:var(--blanco);border:1px solid var(--niebla);padding:30px;display:flex;flex-direction:column;gap:16px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.testi:hover{transform:translateY(-6px);box-shadow:0 26px 44px -30px rgba(28,23,24,.45)}
+.testi blockquote{margin:0;font-size:17px;line-height:1.55;color:var(--negro)}
+.testi blockquote::before{content:"“";display:block;font-family:var(--f-display);font-weight:700;font-size:64px;line-height:.6;height:.4em;color:var(--vino)}
+.testi footer{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--niebla)}
+.testi .ini{flex:none;width:42px;height:42px;border-radius:50%;background:var(--vino);color:var(--blanco);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:18px}
+.testi footer b{display:block;font-family:var(--f-display);font-size:17px}
+.testi footer small{display:block;font-size:13px;color:var(--piedra);line-height:1.35}
+
+/* Contacto */
+.contacto{background:var(--vino-prof);color:var(--crema)}
+.contacto .wrap{padding-block:clamp(80px,11vw,140px) clamp(40px,5vw,60px)}
+.contacto .eyebrow{color:var(--niebla)}
+.contacto h2{font-size:clamp(40px,6.6vw,92px);font-weight:700;color:var(--blanco);margin-top:16px;letter-spacing:-.04em}
+.contacto h2 em{font-style:normal;color:var(--vino);background:var(--blanco);padding:0 .12em .04em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.c-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(36px,6vw,96px);margin-top:clamp(36px,5vw,64px);align-items:start}
+.c-intro p{font-size:clamp(16px,1.4vw,19px);color:var(--crema);max-width:26em}
+.c-intro .pill{margin-top:28px;border-color:var(--blanco);color:var(--vino-prof);background:var(--blanco);padding:16px 28px;font-size:16px}
+.c-intro .pill::before{background:var(--niebla)}
+.c-intro .pill:hover{color:var(--vino-prof)}
+.canales{list-style:none;margin:0;padding:0;border-top:1px solid rgba(237,233,228,.22)}
+.canal{position:relative;isolation:isolate;border-bottom:1px solid rgba(237,233,228,.22)}
+.canal > a,.canal > div{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:18px;padding:22px 8px;text-decoration:none;color:inherit}
+.canal::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--crema);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.canal:hover::before,.canal:focus-within::before{transform:scaleX(1)}
+.canal:hover,.canal:focus-within{color:var(--vino-prof)}
+.canal .ico{width:44px;height:44px;border-radius:50%;border:1px solid rgba(237,233,228,.35);display:grid;place-items:center;transition:border-color .3s,background .3s,color .3s}
+.canal:hover .ico,.canal:focus-within .ico{background:var(--vino);border-color:var(--vino);color:var(--blanco)}
+.canal .ico svg{width:18px;height:18px}
+.canal small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--niebla);transition:color .3s}
+.canal:hover small,.canal:focus-within small{color:var(--vino)}
+.canal .v{display:block;font-family:var(--f-display);font-weight:700;font-size:clamp(18px,1.8vw,23px);letter-spacing:-.02em;overflow-wrap:anywhere;user-select:all}
+.canal .acc{display:flex;align-items:center;gap:10px}
+.canal .flecha{width:38px;height:38px;display:grid;place-items:center;transition:transform .45s var(--ease)}
+.canal .flecha svg{width:16px;height:16px}
+.canal:hover .flecha{transform:rotate(45deg)}
+.copiar{position:relative;z-index:1;background:none;border:1px solid currentColor;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;opacity:.8}
+.copiar:hover{opacity:1;background:var(--vino-prof);color:var(--crema);border-color:var(--vino-prof)}
+.pie-c{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-top:clamp(64px,8vw,104px);padding-top:28px;border-top:1px solid rgba(237,233,228,.22)}
+.logo-apilado{font-family:var(--f-logo);font-weight:700;color:var(--crema);line-height:.92;font-size:30px;text-transform:uppercase}
+.logo-apilado i{font-style:normal;text-transform:none;font-size:16px;display:block;margin-bottom:3px}
+.pie-c nav{display:flex;flex-wrap:wrap;gap:8px}
+.pie-c .pill{border-color:rgba(237,233,228,.4);color:var(--crema)}
+.pie-c .pill::before{background:var(--crema)}
+.pie-c .pill:hover{color:var(--vino-prof)}
+.pie-c p{font-size:13px;color:var(--niebla);width:100%}
+@media (max-width:860px){.c-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.canal > a,.canal > div{grid-template-columns:40px minmax(0,1fr) auto}.canal .ico{width:40px;height:40px}.copiar{padding:6px 10px}}
+
+/* WhatsApp fijo */
+.wsp{position:fixed;z-index:50;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;border-radius:999px;background:var(--vino);color:var(--blanco);font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 14px 30px -12px rgba(70,18,23,.6);transition:transform .35s var(--ease),background .3s}
+.wsp.oculto{opacity:0;pointer-events:none;transform:translateY(12px)}
+.wsp{transition:transform .35s var(--ease),background .3s,opacity .3s}
+.wsp:hover{transform:translateY(-3px);background:var(--vino-prof)}
+.wsp svg{width:20px;height:20px}
+@media (max-width:560px){.wsp span{display:none}.wsp{padding:14px}}
+
+/* Visor */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(28,23,24,.97);display:flex;align-items:center;justify-content:center;padding:calc(20px + env(safe-area-inset-top,0px)) var(--gr) calc(20px + env(safe-area-inset-bottom,0px)) var(--gl);animation:aparece .3s ease both}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+.modal-in{display:flex;gap:32px;align-items:center;max-height:100%;color:var(--crema)}
+.modal video{height:min(84vh,820px);aspect-ratio:9/16;max-width:100%;background:#000;object-fit:contain}
+.ficha{width:250px;display:flex;flex-direction:column;gap:10px}
+.ficha .eyebrow{color:var(--niebla)}
+.ficha h3{font-size:34px;color:var(--blanco)}
+.ficha p{color:var(--crema)}
+.ficha .nav-m{display:flex;gap:8px;margin-top:18px}
+.ficha .pill,.cerrar{border-color:rgba(237,233,228,.5);color:var(--crema)}
+.ficha .pill::before,.cerrar::before{background:var(--crema)}
+.ficha .pill:hover,.cerrar:hover{color:var(--negro)}
+.cerrar{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:var(--gr)}
+@media (max-width:760px){
+  .modal-in{flex-direction:column;gap:14px;width:100%}
+  .modal video{height:auto;width:min(100%,46vh)}
+  .ficha{width:min(100%,46vh)}
+  .ficha h3{font-size:24px}
+  .ficha .nav-m{margin-top:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pista,.cinta-marcas,.hero h1 .l > span{animation:none}
+  .fila{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
+}
+
+/* Celular */
+@media (max-width:560px){
+  body{font-size:16px}
+  .pill{padding:13px 20px}
+  .pill.chica{padding:10px 16px}
+  .pieza{width:128px}
+  .pista{gap:10px}
+  .portada{min-height:560px}
+  .portada .wrap{min-height:560px;padding-block:24px 28px}
+  .propuesta h1{font-size:26px}
+  .propuesta .ctas .pill{flex:1 1 auto;justify-content:center}
+  .atajos{gap:8px}
+  .atajos .pill{padding:10px 16px;font-size:14px}
+  .retrato::before{inset:14px -14px -14px 14px}
+  .retrato .cinta{font-size:14px}
+  .sobre .retrato .c1{right:-12px}
+  .globos{gap:12px}
+  .globo{padding:14px 18px;border-radius:18px 18px 18px 6px}
+  .globos .respuesta{border-radius:18px 18px 6px 18px}
+  .canal > a,.canal > div{padding:18px 4px;gap:14px}
+  .recibes{margin:-28px 0 0 12px;padding:22px}
+  .valores{padding-block:12px}
+  .modal-in{gap:10px}
+  .ficha .nav-m .pill{flex:1;justify-content:center}
+  .canal .v{font-size:16px}
+}
+@media (max-width:860px){
+  .globos .respuesta{align-self:stretch;margin:2px 0 10px;animation:aparece .35s ease both}
+}
+</style>
+<meta property="og:title" content="By Sofia Content · Sofía Demarco">
+<meta property="og:description" content="Estratega y creadora de contenido en Santiago, Chile. Estrategia, producción audiovisual, edición, diseño y gestión de redes para marcas.">
+<meta property="og:image" content="https://bysofiacontent.com/img/sofia-hero.jpg">
+<meta property="og:url" content="https://bysofiacontent.com/">
+<link rel="canonical" href="https://bysofiacontent.com/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#461217">
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio">By Sofia Content</a>
+    <button class="pill chica menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menú</button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="lnk" href="#portafolio">Portafolio</a>
+      <a class="lnk" href="#ayuda">En qué te ayudo</a>
+      <a class="lnk" href="#metodo">Cómo trabajo</a>
+      <a class="lnk" href="#marcas">Marcas</a>
+      <a class="pill chica solida" href="#contacto">Hablemos</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- Portada -->
+  <section class="portada" aria-labelledby="h-hero">
+    <img src="img/sofia-hero.jpg" alt="Sofía Demarco con su computador" fetchpriority="high">
+    <div class="wrap">
+      <div class="propuesta">
+        <p class="eyebrow">Estratega y creadora de contenido · Santiago, Chile</p>
+        <h1 id="h-hero">Una sola persona. Toda tu comunicación, <em>en orden.</em></h1>
+        <div class="ctas">
+          <a class="pill solida" href="#portafolio">Ver portafolio</a>
+          <a class="pill" href="#ayuda">En qué te ayudo</a>
+        </div>
+      </div>
+      <p class="firma-hero">By Sofia<br>Content</p>
+    </div>
+  </section>
+
+  <!-- Visión -->
+  <section class="vision" aria-label="Mi objetivo">
+    <div class="wrap">
+      <p class="eyebrow">Mi objetivo</p>
+      <p class="frase">Que puedas delegar tu comunicación con confianza, mientras me ocupo de darle dirección, coherencia y continuidad.</p>
+    </div>
+  </section>
+  <div class="valores" aria-hidden="true">
+    <div class="cinta-v">
+      <span>Estrategia</span><span>Orden</span><span>Estética</span><span>Cercanía</span><span>Claridad</span><span>Compromiso</span>
+      <span>Estrategia</span><span>Orden</span><span>Estética</span><span>Cercanía</span><span>Claridad</span><span>Compromiso</span>
+    </div>
+  </div>
+
+  <!-- Sobre mí -->
+  <section class="sec sobre" id="sobre-mi" aria-labelledby="h-sobre">
+    <div class="wrap">
+      <p class="vertical" aria-hidden="true">Sobre mí</p>
+      <figure class="retrato" style="margin:0">
+        <img src="img/sofia-sonrisa.jpg" alt="Sofía Demarco, licenciada en Marketing y creadora de contenido" loading="lazy">
+        <span class="cinta c1">No soy solo un estudio de contenido</span>
+      </figure>
+      <div>
+        <h2 class="sec-titulo" id="h-sobre">Hola, soy Sofía. <span class="acento">Tu estratega y creadora de contenido.</span></h2>
+        <div class="historia">
+          <p>Soy <strong>licenciada en Marketing</strong> y creadora de contenido freelance. Acompaño a marcas que buscan comunicar su esencia, construir una identidad sólida y mantener una presencia digital coherente y estratégica.</p>
+          <p>Trabajo desde un enfoque creativo y personalizado, integrando planificación, estrategia, producción audiovisual y edición para desarrollar contenido alineado con la identidad y los objetivos de cada marca, potenciando su posicionamiento con estrategia, creatividad y estética.</p>
+        </div>
+        <nav class="atajos" aria-label="Ir a una sección">
+          <a class="pill" href="#portafolio">Portafolio</a>
+          <a class="pill" href="#ayuda">En qué te ayudo</a>
+          <a class="pill" href="#metodo">Cómo trabajo</a>
+          <a class="pill" href="#marcas">Marcas</a>
+          <a class="pill" href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portafolio en movimiento + categorías -->
+  <section class="port" id="portafolio" aria-labelledby="h-port">
+    <div class="wrap port-head">
+      <div>
+        <p class="eyebrow">Portafolio</p>
+        <h2 class="sec-titulo" id="h-port">Marcas distintas. <span class="acento">Historias propias.</span></h2>
+      </div>
+      <p>Videos que pensé, grabé y edité para marcas reales. Toca cualquier pieza para verla en grande, con sonido.</p>
+    </div>
+    <div class="fila" id="fila-1"><div class="pista"></div></div>
+    <div class="fila inversa" id="fila-2"><div class="pista"></div></div>
+    <div class="wrap">
+      <div class="cats" role="group" aria-label="Filtrar por rubro">
+        <button class="pill chica" data-cat="todos" aria-pressed="true">Todos</button>
+        <button class="pill chica" data-cat="Gastronomía" aria-pressed="false">Gastronomía</button>
+        <button class="pill chica" data-cat="Belleza" aria-pressed="false">Belleza</button>
+        <button class="pill chica" data-cat="Moda y lifestyle" aria-pressed="false">Moda y lifestyle</button>
+        <button class="pill chica" data-cat="Servicios" aria-pressed="false">Servicios</button>
+        <div class="lado">
+          <span class="cuenta" id="cuenta" aria-live="polite"></span>
+          <button class="pill chica" id="pausa" aria-pressed="false">Pausar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lo que me hace distinta -->
+  <section class="sec distinta" aria-labelledby="h-dif">
+    <div class="wrap">
+      <p class="eyebrow">Lo que me hace distinta</p>
+      <h2 class="sec-titulo" id="h-dif">La estratega y creadora que <span class="acento">planifica, ordena y hace todo.</span></h2>
+      <div class="difs">
+        <div class="dif"><h3>Todo en una persona</h3><p>Estrategia, grabación, edición, diseño y gestión. Sin intermediarios ni mensajes que se pierden entre áreas.</p></div>
+        <div class="dif"><h3>Estética cuidada</h3><p>Contenido con nivel visual premium, coherente con tu marca y pensado para que tu cuenta se vea profesional.</p></div>
+        <div class="dif"><h3>Trato personalizado</h3><p>Respondo yo. Conozco tu negocio a fondo y adapto cada propuesta a tu momento, tu presupuesto y tus objetivos.</p></div>
+        <div class="dif"><h3>Orden y planificación</h3><p>Calendario mensual, fechas de entrega y aprobaciones. Tus redes dejan de ser improvisación.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- En qué te puedo ayudar -->
+  <section class="sec ayuda" id="ayuda" aria-labelledby="h-ayuda">
+    <div class="wrap">
+      <div class="ayuda-head">
+        <div>
+          <p class="eyebrow">Servicios</p>
+          <h2 class="sec-titulo grande" id="h-ayuda">En qué te puedo <span class="acento">ayudar.</span></h2>
+        </div>
+        <p><strong class="sub">Si te pasa esto, tiene solución.</strong> Toca el mensaje que se parece a lo que te pasa y te respondo cómo lo resolvemos. Puedes contratar un servicio o la gestión completa.</p>
+      </div>
+      <div class="chat">
+        <div class="globos" id="globos" role="tablist" aria-label="Elige lo que te pasa"></div>
+        <div class="respuesta" id="respuesta" role="tabpanel" aria-live="polite"></div>
+      </div>
+      <div class="ayuda-cta">
+        <p>¿Te viste en alguno?</p>
+        <a class="pill solida" data-wsp="un proyecto de contenido" target="_blank" rel="noopener">Cuéntame tu caso <svg class="fl" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M5 4h7v7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Método -->
+  <section class="sec metodo" id="metodo" aria-labelledby="h-metodo">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Cómo trabajo</p>
+        <h2 class="sec-titulo" id="h-metodo">Orden, planificación <span class="acento">y estructura.</span></h2>
+        <ol class="pasos">
+          <li><b>Diagnóstico</b><span>Una sesión para revisar tu cuenta, tu negocio, tus clientas y tus objetivos.</span></li>
+          <li><b>Plan</b><span>Defino pilares, formatos y un calendario mensual con fechas de publicación.</span></li>
+          <li><b>Producción</b><span>Grabo, edito y diseño en jornadas planificadas, con guion y lista de tomas.</span></li>
+          <li><b>Aprobación</b><span>Revisas todo en un solo lugar antes de que se publique. Nada se pierde en el chat.</span></li>
+          <li><b>Publicación y comunidad</b><span>Publico en las fechas acordadas y respondo a tu comunidad.</span></li>
+          <li><b>Informe y ajuste</b><span>Cada mes te muestro qué funcionó, con números, y ajusto el plan siguiente.</span></li>
+        </ol>
+      </div>
+      <div class="col-der">
+        <figure class="foto-metodo"><img src="img/sofia-teclado.jpg" alt="Sofía trabajando en su computador" loading="lazy"></figure>
+      <aside class="recibes">
+        <h3>Lo que recibes cada mes</h3>
+        <ul>
+          <li>Calendario de contenido con fechas, formatos y objetivos</li>
+          <li>Carpeta ordenada con todas las piezas aprobadas</li>
+          <li>Copys listos y revisados</li>
+          <li>Informe mensual de resultados</li>
+          <li>Reunión de revisión y plan del mes siguiente</li>
+        </ul>
+      </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marcas -->
+  <section class="marcas" id="marcas" aria-labelledby="h-marcas">
+    <div class="wrap"><p class="eyebrow" id="h-marcas">Marcas que confiaron en mí</p></div>
+    <div class="cinta-marcas">
+      <ul>
+        <li>Project Nömada</li><li>Kevin &amp; Bacon</li><li>My Break</li><li>GlowMed</li><li>NormiQA</li><li>Sovée Active</li><li>Sugey Molano Studio</li><li>Misceláneo</li><li>Sabores a Casa</li><li>The Glow Project</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Project Nömada</li><li>Kevin &amp; Bacon</li><li>My Break</li><li>GlowMed</li><li>NormiQA</li><li>Sovée Active</li><li>Sugey Molano Studio</li><li>Misceláneo</li><li>Sabores a Casa</li><li>The Glow Project</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Reseñas (se conectarán a Google Sheets) -->
+  <section class="sec" id="resenas" aria-labelledby="h-res" style="padding-top:0">
+    <div class="wrap">
+      <div class="res-head">
+        <div>
+          <p class="eyebrow">Reseñas</p>
+          <h2 class="sec-titulo" id="h-res">Lo que dicen las marcas.</h2>
+        </div>
+        <div class="promedio" id="promedio"></div>
+      </div>
+      <div class="testis" id="testis"></div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contacto" id="contacto" aria-labelledby="h-contacto">
+    <div class="wrap">
+      <p class="eyebrow">Tu próximo proyecto</p>
+      <h2 id="h-contacto">Tus redes, <em>en orden.</em></h2>
+      <div class="c-grid">
+        <div class="c-intro">
+          <p>Cuéntame sobre tu marca, qué necesitas hoy y hacia dónde quieres ir. Te respondo yo y encontramos juntas el punto de partida.</p>
+          <a class="pill" data-wsp="un proyecto de contenido" target="_blank" rel="noopener"><span class="ic-wsp"></span>Escríbeme por WhatsApp</a>
+        </div>
+        <ul class="canales">
+          <li class="canal">
+            <a href="https://wa.me/56945895349" target="_blank" rel="noopener">
+              <span class="ico"><span class="ic-wsp"></span></span>
+              <span><small>WhatsApp</small><span class="v">+56 9 4589 5349</span></span>
+              <span class="acc"><span class="flecha"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M5 4h7v7"/></svg></span></span>
+            </a>
+          </li>
+          <li class="canal">
+            <div>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6l9 7 9-7"/></svg></span>
+              <span><small>Correo</small><span class="v" id="mail">bysofiademarco@gmail.com</span></span>
+              <span class="acc"><button class="copiar" data-copy="mail">Copiar</button></span>
+            </div>
+          </li>
+          <li class="canal">
+            <a href="https://www.instagram.com/bysofiacontent" target="_blank" rel="noopener">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".8" fill="currentColor"/></svg></span>
+              <span><small>Instagram</small><span class="v">@bysofiacontent</span></span>
+              <span class="acc"><span class="flecha"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M5 4h7v7"/></svg></span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="pie-c">
+        <div class="logo-apilado"><i>by</i>Sofia<br>Content</div>
+        <nav aria-label="Secciones">
+          <a class="pill chica" href="#portafolio">Portafolio</a>
+          <a class="pill chica" href="#ayuda">En qué te ayudo</a>
+          <a class="pill chica" href="#metodo">Cómo trabajo</a>
+          <a class="pill chica" href="#inicio">Volver arriba ↑</a>
+        </nav>
+        <p>© 2026 By Sofia Content · Santiago, Chile · Contenido que se ve bien y vende mejor.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<a class="wsp" data-wsp="un proyecto de contenido" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><span class="ic-wsp"></span><span>WhatsApp</span></a>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-marca">
+  <button class="pill chica cerrar" id="m-cerrar">Cerrar ✕</button>
+  <div class="modal-in">
+    <video id="m-video" controls playsinline preload="auto"></video>
+    <div class="ficha">
+      <p class="eyebrow" id="m-cat"></p>
+      <h3 id="m-marca"></h3>
+      <p id="m-tipo"></p>
+      <div class="nav-m"><button class="pill chica" id="m-prev">← Anterior</button><button class="pill chica" id="m-next">Siguiente →</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const T = [
+  ["nuevo-12","Sugey Molano Studio","Belleza","Nuevo studio"],
+  ["dinamica-kevin-bacon","Kevin & Bacon","Gastronomía","Reel del local"],
+  ["unas-1","My Break","Belleza","Reel de marca: protocolo de higiene"],
+  ["dinamica-dibujo","Sovée Active","Moda y lifestyle","Reel de outfit"],
+  ["nuevo-13","Sugey Molano Studio","Belleza","Protocolo de sanitización"],
+  ["nuevo-10","Kevin & Bacon","Gastronomía","Nuevos productos"],
+  ["unas-2","My Break","Belleza","Reel de servicio: builder gel"],
+  ["nuevo-4","@bysofiacontent","Moda y lifestyle","Mi presentación"],
+  ["nuevo-9","NormiQA","Servicios","Reel de presentación"],
+  ["vita-responde","Vita Wallet","Servicios","Vita responde: comisiones"],
+  ["nuevo-14","Sugey Molano Studio","Belleza","Captación de estilistas"],
+  ["nuevo-11","Kevin & Bacon","Gastronomía","Maillard"],
+  ["nuevo-8","Vita Wallet","Servicios","Reel educativo"],
+  ["vita-extra","Vita Wallet","Servicios","Centraliza tus pagos"],
+  ["nuevo-6","The Glow Project","Belleza","Acompáñame en un evento"],
+  ["vita-latam","Vita Wallet","Servicios","Pagos a cualquier país de Latam"],
+  ["unas-3","My Break","Belleza","Recorrido del salón"],
+  ["nuevo-5","Kevin & Bacon","Gastronomía","Ping pong de hamburguesas"],
+  ["dinamica-tutorial-eliminar-voz","@bysofiacontent","Moda y lifestyle","Tutorial: eliminar la voz"],
+  ["nuevo-15","Sugey Molano Studio","Belleza","El capilógrafo"],
+  ["vita-horas","Vita Wallet","Servicios","Cómo reducir las horas administrativas"],
+  ["nuevo-7","Vita Wallet","Servicios","Reel de producto"],
+  ["basica-ugc","Kevin & Bacon","Gastronomía","Contenido UGC"],
+  ["vita-evento","Vita Wallet","Servicios","Cobertura de evento"],
+  ["dinamica-drop2","Sovée Active","Moda y lifestyle","Lanzamiento de colección"],
+  ["estandar-textos-tutorial","@bysofiacontent","Moda y lifestyle","Tutorial: textos"]
+].map(([id,marca,cat,tipo]) => ({id,marca,cat,tipo}));
+const byId = Object.fromEntries(T.map(t => [t.id,t]));
+const $ = s => document.querySelector(s);
+const WSP = '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.7 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>';
+const wspUrl = tema => "https://wa.me/56945895349?text=" + encodeURIComponent(`Hola Sofia! Quiero consultarte por ${tema}.`);
+
+/* En qué te ayudo: problema → solución */
+const CASOS = [
+  {q:"Publico cuando puedo, sin constancia ni un plan.", b:"Le doy dirección a tu contenido",
+   p:"Analizo tu marca y tus redes, defino pilares y formatos, y te entrego una grilla mensual. Sabes qué se publica, cuándo y por qué.",
+   tags:["Sesión estratégica","Análisis de marca","Pilares","Grilla mensual"], tema:"una sesión estratégica", img:"estandar-textos-tutorial"},
+  {q:"Mi cuenta no refleja la calidad de lo que ofrezco.", b:"Produzco videos a la altura de tu marca",
+   p:"Voy a tu espacio con guion y lista de tomas, grabo y edito piezas con una estética cuidada y coherente con tu identidad.",
+   tags:["Producción audiovisual","Guion","Grabación en tu espacio","Edición"], tema:"producción audiovisual", img:"nuevo-10"},
+  {q:"Grabo mis videos, pero no logro que se vean profesionales.", b:"Edito para que retengan y comuniquen",
+   p:"Tú grabas y yo le doy ritmo, subtítulos, textos en pantalla y sonido, siempre con la identidad de tu marca.",
+   tags:["Edición de videos","Ritmo","Subtítulos","Sonido"], tema:"edición de videos", img:"dinamica-kevin-bacon"},
+  {q:"Mi feed se ve desordenado y cada publicación parece de una marca distinta.", b:"Diseño piezas gráficas con tu identidad",
+   p:"Historias, gráficas de promociones, carruseles y posts listos para publicar, todos con la misma línea visual para que tu marca se reconozca a primera vista.",
+   tags:["Diseño de contenido digital","Historias","Promociones","Carruseles","Posts"], tema:"diseño de contenido digital", img:"nuevo-4"},
+  {q:"No tengo tiempo para estar en redes todos los días.", b:"Me encargo de tus redes de principio a fin",
+   p:"Publico en las fechas acordadas, respondo a tu comunidad y cada mes te muestro qué funcionó, con números, para ajustar el plan.",
+   tags:["Community management","Calendario","Comunidad","Informe mensual"], tema:"community management", img:"nuevo-12"},
+  {q:"Probé con una agencia y me sentí un número más.", b:"Una sola persona responsable de todo",
+   p:"Hablas siempre conmigo. Estrategia, producción, diseño y gestión en un mismo lugar, con procesos claros y resultados que puedes ver.",
+   tags:["Gestión integral","Una sola persona","Procesos claros"], tema:"la gestión integral de mis redes", img:"unas-1"}
+];
+const globos = $("#globos"), resp = $("#respuesta");
+globos.innerHTML = CASOS.map((c,i) => `<button class="globo" role="tab" id="g${i}" aria-selected="${i===0}" aria-controls="respuesta"><small>Si sientes que…</small>${c.q}</button>`).join("");
+const mqCel = matchMedia("(max-width:860px)");
+function responder(i){
+  const c = CASOS[i];
+  if (mqCel.matches) globos.querySelectorAll(".globo")[i].after(resp); else if (resp.parentNode !== globos.parentNode || resp.previousElementSibling !== globos) globos.after(resp);
+  globos.querySelectorAll(".globo").forEach((g,j) => g.setAttribute("aria-selected", j === i));
+  resp.setAttribute("aria-labelledby", "g" + i);
+  resp.innerHTML = `<div class="cambia">
+    <div class="quien"><img src="img/sofia-sonrisa.jpg" alt=""><div><b>Sofía</b><span>Lo que hago por ti</span></div></div>
+    <span class="cinta serv">${c.tags[0]}</span>
+    <h3>${c.b}.</h3>
+    <p>${c.p}</p>
+    <div class="tags">${c.tags.slice(1).map(t => `<span>${t}</span>`).join("")}</div>
+    <a class="pill" href="${wspUrl(c.tema)}" target="_blank" rel="noopener">${WSP}Consultar por este servicio</a>
+  </div>`;
+}
+const indiceGlobo = g => [...globos.querySelectorAll(".globo")].indexOf(g);
+globos.addEventListener("click", e => { const g = e.target.closest(".globo"); if (g) responder(indiceGlobo(g)); });
+mqCel.addEventListener("change", () => { const sel = globos.querySelector('.globo[aria-selected="true"]'); responder(Math.max(0, indiceGlobo(sel))); });
+globos.addEventListener("keydown", e => {
+  const i = indiceGlobo(document.activeElement); if (i < 0) return;
+  const n = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
+  if (n) { e.preventDefault(); const k = (i + n + CASOS.length) % CASOS.length; globos.querySelectorAll(".globo")[k].focus(); responder(k); }
+});
+responder(0);
+document.querySelectorAll("[data-wsp]").forEach(a => a.href = wspUrl(a.dataset.wsp));
+document.querySelectorAll(".ic-wsp").forEach(s => s.outerHTML = WSP);
+
+/* Header y menú móvil */
+const hdr = $("#top");
+addEventListener("scroll", () => hdr.classList.toggle("scrolled", scrollY > 8), {passive:true});
+const menuBtn = $("#menu-btn"), nav = $("#nav");
+menuBtn.addEventListener("click", () => menuBtn.setAttribute("aria-expanded", nav.classList.toggle("abierto")));
+nav.addEventListener("click", e => { if (e.target.closest("a")) { nav.classList.remove("abierto"); menuBtn.setAttribute("aria-expanded","false"); } });
+
+/* Portafolio en movimiento: previews mudos que solo se reproducen en pantalla */
+const port = $("#portafolio");
+const io = new IntersectionObserver(es => es.forEach(e => {
+  const v = e.target;
+  if (e.isIntersecting && !port.classList.contains("pausado")) v.play().catch(()=>{});
+  else v.pause();
+}), {rootMargin:"120px"});
+function pieza(t, oculto){
+  const b = document.createElement("button");
+  b.className = "pieza"; b.dataset.id = t.id;
+  if (oculto) { b.setAttribute("aria-hidden","true"); b.tabIndex = -1; }
+  else b.setAttribute("aria-label", `Ver ${t.tipo} para ${t.marca}`);
+  b.innerHTML = `<video src="p/${t.id}.mp4" poster="img/${t.id}.jpg" muted loop playsinline preload="none"></video>
+    <span class="ver"><svg viewBox="0 0 14 14" fill="currentColor"><path d="M2 1l11 6-11 6z"/></svg></span>
+    <span class="info"><b>${t.marca}</b><small>${t.tipo}</small></span>`;
+  return b;
+}
+let cat = "todos";
+const lista = () => cat === "todos" ? T : T.filter(t => t.cat === cat);
+function llenar(sel, items){
+  const pista = $(sel + " .pista");
+  pista.querySelectorAll("video").forEach(v => io.unobserve(v));
+  pista.innerHTML = "";
+  let base = items.slice();
+  while (base.length < 9) base = base.concat(items);
+  [...base, ...base].forEach((t,i) => pista.appendChild(pieza(t, i >= items.length)));
+  pista.style.setProperty("--dur", Math.max(40, base.length * 5) + "s");
+  pista.querySelectorAll("video").forEach(v => io.observe(v));
+}
+function pintar(){
+  const l = lista();
+  const mitad = Math.ceil(l.length / 2);
+  llenar("#fila-1", l.length >= 8 ? l.slice(0, mitad) : l);
+  llenar("#fila-2", l.length >= 8 ? l.slice(mitad) : l.slice().reverse());
+  $("#cuenta").textContent = `${l.length} ${l.length === 1 ? "video" : "videos"}`;
+}
+document.querySelectorAll(".cats [data-cat]").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".cats [data-cat]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  cat = b.dataset.cat; pintar();
+}));
+pintar();
+const pausa = $("#pausa");
+function setPausa(p){
+  port.classList.toggle("pausado", p);
+  pausa.textContent = p ? "Reanudar" : "Pausar";
+  pausa.setAttribute("aria-pressed", p);
+  port.querySelectorAll("video").forEach(v => {
+    if (p) v.pause();
+    else { const r = v.getBoundingClientRect(); if (r.right > 0 && r.left < innerWidth && r.bottom > 0 && r.top < innerHeight) v.play().catch(()=>{}); }
+  });
+}
+pausa.addEventListener("click", () => setPausa(!port.classList.contains("pausado")));
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) setPausa(true);
+
+/* Visor de video */
+const modal = $("#modal"), mv = $("#m-video");
+let actual = null, origen = null;
+function abrir(id, desde){
+  const t = byId[id]; if (!t) return;
+  actual = id;
+  $("#m-cat").textContent = t.cat;
+  $("#m-marca").textContent = t.marca;
+  $("#m-tipo").textContent = t.tipo;
+  mv.poster = `img/${t.id}.jpg`;
+  mv.src = `v/${t.id}.mp4`;
+  if (modal.hidden) { origen = desde || document.activeElement; modal.hidden = false; document.body.style.overflow = "hidden"; $("#m-cerrar").focus(); }
+  mv.play().catch(()=>{});
+}
+function cerrar(){
+  mv.pause(); mv.removeAttribute("src"); mv.load();
+  modal.hidden = true; document.body.style.overflow = "";
+  if (origen) origen.focus();
+}
+function mover(d){
+  const l = lista(); const i = l.findIndex(t => t.id === actual);
+  abrir(l[(i + d + l.length) % l.length].id);
+}
+document.addEventListener("click", e => { const b = e.target.closest(".pieza"); if (b) abrir(b.dataset.id, b); });
+$("#m-cerrar").addEventListener("click", cerrar);
+$("#m-prev").addEventListener("click", () => mover(-1));
+$("#m-next").addEventListener("click", () => mover(1));
+modal.addEventListener("click", e => { if (e.target === modal) cerrar(); });
+document.addEventListener("keydown", e => {
+  if (modal.hidden) return;
+  if (e.key === "Escape") cerrar();
+  if (e.key === "ArrowRight") mover(1);
+  if (e.key === "ArrowLeft") mover(-1);
+});
+
+/* Reseñas: se leen en vivo desde el Google Sheet (solo filas con Aprobada = Sí).
+   Si la planilla no responde (por ejemplo dentro de Claude), se muestran las últimas reseñas guardadas aquí. */
+const SHEET_ID = "1h4Stit4KbGuX9fgF1DNQ_73Rjv6ki-QHvUOiF9Tdvfo", SHEET_GID = "243243120";
+const RESENAS_GUARDADAS = [{"n": "Giannina", "m": "Vita Wallet", "s": "Producción de contenido audiovisual", "e": 5, "t": "Trabajar con Sofia fue un 10/10. No solo por la calidad de los videos, que quedaron world class, sino por toda la gestión detrás, propuso los guiones, organizó el contenido y cumplió con todas las fechas. Tiene iniciativa, entiende el proceso y se nota que le pone cabeza a lo que hace. De esas personas que hacen que todo fluya y encima superan las expectativas. La recomiendo a ojos cerrados."}, {"n": "Libia Sugey", "m": "Sugey Molano Studio", "s": "Producción de contenido audiovisual", "e": 5, "t": "Sofia es una excelente profesional y maravillosa persona, lo cual para mi es fundamental porque eso te permite que fluyan todas las ideas. Es apasionada por lo que hace, paciente porque en nuestro caso particular las redes y este tipo de material no es un tema de facil dominio pero ella te ayuda a verlo de forma natural, es prolija, responsable, de muchas ideas e iniciativa. Super recomendada"}, {"n": "Moisés", "m": "VITA", "s": "Producción de contenido audiovisual", "e": 5, "t": "Sofia resolvió la creación de contenido y nos permitió simplificar el discurso ante los clientes en las RRSS. Gracias por el servicio"}];
+function pintarResenas(lista){
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  $("#testis").innerHTML = lista.map(r => `
+    <figure class="testi">
+      <span class="estrellas" aria-label="${r.e} de 5 estrellas">${"★".repeat(Math.round(r.e))}${"☆".repeat(5 - Math.round(r.e))}</span>
+      <blockquote>${esc(r.t)}</blockquote>
+      <footer><span class="ini" aria-hidden="true">${esc(r.n.trim()[0] || "")}</span><span><b>${esc(r.n)}</b><small>${esc(r.m)} · ${esc(r.s)}</small></span></footer>
+    </figure>`).join("");
+  const prom = lista.reduce((a, r) => a + r.e, 0) / lista.length;
+  $("#promedio").innerHTML = lista.length ? `<b>${prom.toFixed(1).replace(".", ",")}</b><span><span class="estrellas">★★★★★</span><br>${lista.length} ${lista.length === 1 ? "reseña" : "reseñas"} de clientas reales</span>` : "";
+}
+pintarResenas(RESENAS_GUARDADAS);
+window.cargarResenas = res => {
+  try {
+    const cols = res.table.cols.map(c => (c.label || "").trim().toLowerCase());
+    const i = k => cols.indexOf(k);
+    const lista = res.table.rows.map(r => r.c.map(c => c ? (c.v ?? "") : "")).filter(f => String(f[i("aprobada")]).trim().toLowerCase().startsWith("s"))
+      .map(f => ({n:f[i("nombre")], m:f[i("marca")], s:f[i("servicio")], e:Number(f[i("estrellas")]) || 5, t:f[i("reseña")]}))
+      .filter(r => r.t);
+    if (lista.length) pintarResenas(lista);
+  } catch (e) {}
+};
+(() => { const sc = document.createElement("script"); sc.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?gid=${SHEET_GID}&tqx=responseHandler:cargarResenas`; sc.onerror = () => sc.remove(); document.body.appendChild(sc); })();
+
+/* El botón flotante de WhatsApp se esconde cuando ya se ve la sección de contacto */
+new IntersectionObserver(([e]) => $(".wsp").classList.toggle("oculto", e.isIntersecting), {threshold:.15}).observe($("#contacto"));
+
+/* Copiar correo */
+document.querySelectorAll(".copiar").forEach(b => b.addEventListener("click", e => {
+  e.preventDefault();
+  const el = document.getElementById(b.dataset.copy);
+  const ok = () => { b.textContent = "Copiado ✓"; setTimeout(() => b.textContent = "Copiar", 1800); };
+  const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(el.textContent.trim()).then(ok, sel); } catch { sel(); }
+}));
+</script>
+</body>
+</html>
